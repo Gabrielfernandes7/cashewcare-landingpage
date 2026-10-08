@@ -7,7 +7,7 @@
 <meta name="description" content="Visão computacional que diagnostica pragas e doenças do cajueiro a partir de uma foto. Menos perdas, menos defensivos, mais renda no campo." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -21,6 +21,7 @@ tailwind.config = {
           accent: '#EC4C36',
           peach: '#FED8A7',
           cream: '#FFFCF9',
+          huawei: '#CF0A2C',
         }
       },
       fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
@@ -44,11 +45,7 @@ body { background: #FFFCF9; color: #171717; overflow-x: hidden; }
 ::-webkit-scrollbar-track { background: #FFFCF9; }
 ::-webkit-scrollbar-thumb { background: #006F47; border-radius: 99px; }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
-}
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
 .reveal.is-visible { opacity: 1; transform: none; }
 .reveal-delay-1 { transition-delay: .08s; }
 .reveal-delay-2 { transition-delay: .16s; }
@@ -68,11 +65,7 @@ body { background: #FFFCF9; color: #171717; overflow-x: hidden; }
 }
 
 .nav-link { position: relative; }
-.nav-link::after {
-  content: ''; position: absolute; left: 0; bottom: -6px;
-  width: 0; height: 2px; background: #EC4C36; border-radius: 2px;
-  transition: width .3s cubic-bezier(.16,1,.3,1);
-}
+.nav-link::after { content: ''; position: absolute; left: 0; bottom: -6px; width: 0; height: 2px; background: #EC4C36; border-radius: 2px; transition: width .3s cubic-bezier(.16,1,.3,1); }
 .nav-link:hover::after, .nav-link.active::after { width: 100%; }
 .nav-link.active { color: #006F47; font-weight: 700; }
 
@@ -82,30 +75,24 @@ body { background: #FFFCF9; color: #171717; overflow-x: hidden; }
 .card-lift:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -15px rgba(0,111,71,.2); }
 
 .field:focus { outline: none; border-color: #006F47; box-shadow: 0 0 0 4px rgba(0,111,71,.1); }
-.field:focus + label, .field:not(:placeholder-shown) + label {
-  transform: translateY(-1.4rem) scale(.85); color: #006F47; font-weight: 600;
-}
+.field:focus + label, .field:not(:placeholder-shown) + label { transform: translateY(-1.4rem) scale(.85); color: #006F47; font-weight: 600; }
 
-.text-gradient {
-  background: linear-gradient(100deg, #006F47 0%, #EC4C36 100%);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-}
+.text-gradient { background: linear-gradient(100deg, #006F47 0%, #EC4C36 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
-.skip-link {
-  position: absolute; left: -9999px; top: 0; z-index: 100;
-  background: #006F47; color: #fff; padding: .75rem 1.25rem;
-  border-radius: 0 0 .75rem 0; font-weight: 700; font-size: .875rem;
-}
+.skip-link { position: absolute; left: -9999px; top: 0; z-index: 100; background: #006F47; color: #fff; padding: .75rem 1.25rem; border-radius: 0 0 .75rem 0; font-weight: 700; font-size: .875rem; }
 .skip-link:focus { left: 0; }
 
-input[type="radio"]:focus-visible + div {
-  outline: 2px solid #006F47; outline-offset: 2px;
-}
+input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-offset: 2px; }
 
-.credential-strip {
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
-  gap: .75rem 2rem;
-}
+.credential-strip { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.25rem 3rem; }
+
+.logo-mark { transition: opacity .3s ease, filter .3s ease; }
+.logo-mark:hover { opacity: 1; filter: grayscale(0); }
+.logo-mark-muted { opacity: .55; filter: grayscale(1); }
+.logo-mark-muted:hover { opacity: 1; filter: grayscale(0); }
+
+.team-social { transition: color .2s ease, transform .2s ease; }
+.team-social:hover { transform: translateY(-1px); }
 </style>
 </head>
 
@@ -116,7 +103,7 @@ input[type="radio"]:focus-visible + div {
 <header id="header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
   <nav class="max-w-7xl mx-auto px-5 lg:px-8">
     <div class="flex items-center justify-between h-16 lg:h-20">
-      <a href="#hero" class="flex items-center gap-2.5">
+      <a href="#hero" class="flex items-center gap-2.5 shrink-0">
         <span class="w-9 h-9 rounded-xl bg-brand-green grid place-items-center text-brand-cream">
           <i class="fa-solid fa-leaf text-[15px]"></i>
         </span>
@@ -133,16 +120,29 @@ input[type="radio"]:focus-visible + div {
         <a href="#equipe"   class="nav-link hover:text-brand-green transition">Equipe</a>
       </div>
 
-      <a href="#contato"
-         class="hidden lg:inline-flex items-center gap-2 bg-brand-accent text-white text-sm font-bold px-5 py-2.5 rounded-full hover:bg-brand-dark transition-all duration-300">
-        <i class="fa-solid fa-comment-dots text-xs"></i>
-        Falar com o time
-      </a>
+      <div class="flex items-center gap-3 lg:gap-4">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Instituto_Federal_do_Cear%C3%A1_-_Marca_Vertical_2015.svg"
+             alt="IFCE — Campus Fortaleza"
+             class="hidden lg:block h-9 w-auto opacity-70 hover:opacity-100 transition logo-mark"
+             loading="lazy" />
 
-      <button id="menuBtn" aria-label="Abrir menu" aria-expanded="false"
-              class="lg:hidden w-10 h-10 grid place-items-center rounded-xl text-brand-dark hover:bg-brand-green/10 transition">
-        <i id="menuIcon" class="fa-solid fa-bars text-lg"></i>
-      </button>
+        <a href="https://instagram.com/cashewcare" target="_blank" rel="noopener"
+           aria-label="Instagram do CashewCare — @cashewcare"
+           class="hidden lg:grid w-9 h-9 place-items-center rounded-xl text-brand-dark/60 hover:text-brand-accent hover:bg-brand-accent/5 transition">
+          <i class="fa-brands fa-instagram text-lg"></i>
+        </a>
+
+        <a href="#contato"
+           class="hidden lg:inline-flex items-center gap-2 bg-brand-accent text-white text-sm font-bold px-5 py-2.5 rounded-full hover:bg-brand-dark transition-all duration-300">
+          <i class="fa-solid fa-comment-dots text-xs"></i>
+          Falar com o time
+        </a>
+
+        <button id="menuBtn" aria-label="Abrir menu" aria-expanded="false"
+                class="lg:hidden w-10 h-10 grid place-items-center rounded-xl text-brand-dark hover:bg-brand-green/10 transition">
+          <i id="menuIcon" class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -154,7 +154,22 @@ input[type="radio"]:focus-visible + div {
       <a href="#tracao"   class="mobile-link py-3 border-b border-brand-dark/5 flex items-center gap-3"><i class="fa-solid fa-chart-line w-5 text-brand-accent"></i>Tração</a>
       <a href="#planos"   class="mobile-link py-3 border-b border-brand-dark/5 flex items-center gap-3"><i class="fa-solid fa-tags w-5 text-brand-accent"></i>Planos</a>
       <a href="#equipe"   class="mobile-link py-3 border-b border-brand-dark/5 flex items-center gap-3"><i class="fa-solid fa-users w-5 text-brand-accent"></i>Equipe</a>
-      <a href="#contato"  class="mobile-link mt-3 bg-brand-accent text-white text-center font-bold py-3.5 rounded-full">
+
+      <div class="flex items-center justify-between mt-4 px-1">
+        <div class="flex items-center gap-3">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Instituto_Federal_do_Cear%C3%A1_-_Marca_Vertical_2015.svg"
+               alt="IFCE — Campus Fortaleza" class="h-8 w-auto opacity-70" loading="lazy" />
+          <span class="text-[10px] font-bold uppercase tracking-wider text-brand-dark/40">Campus Fortaleza</span>
+        </div>
+        <a href="https://instagram.com/cashewcare" target="_blank" rel="noopener"
+           aria-label="Instagram @cashewcare"
+           class="flex items-center gap-2 text-brand-dark/60 hover:text-brand-accent transition text-sm">
+          <i class="fa-brands fa-instagram text-lg"></i>
+          <span class="font-bold text-xs">@cashewcare</span>
+        </a>
+      </div>
+
+      <a href="#contato"  class="mobile-link mt-4 bg-brand-accent text-white text-center font-bold py-3.5 rounded-full">
         <i class="fa-solid fa-comment-dots mr-2"></i>Falar com o time
       </a>
     </div>
@@ -162,7 +177,6 @@ input[type="radio"]:focus-visible + div {
 </header>
 
 
-<!-- Hero -->
 <section id="hero" class="relative pt-28 lg:pt-36 pb-20 lg:pb-24 overflow-hidden">
   <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
     <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-14 lg:gap-12 items-center">
@@ -344,23 +358,71 @@ input[type="radio"]:focus-visible + div {
 </section>
 
 
-<!-- Credenciais -->
-<section class="py-10 border-y border-brand-dark/5 bg-white/60">
+<section aria-label="Credenciais e reconhecimentos" class="py-12 lg:py-14 border-y border-brand-dark/5 bg-white/60">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
-    <div class="credential-strip text-sm text-brand-dark/60 font-semibold">
-      <span class="flex items-center gap-2"><i class="fa-solid fa-trophy text-brand-accent"></i> 3º lugar · HDC LATAM 2025</span>
-      <span class="hidden sm:inline text-brand-dark/20">·</span>
-      <span class="flex items-center gap-2"><i class="fa-solid fa-graduation-cap text-brand-green"></i> IFCE Fortaleza</span>
-      <span class="hidden sm:inline text-brand-dark/20">·</span>
-      <span class="flex items-center gap-2"><i class="fa-solid fa-lightbulb text-brand-green"></i> Programa Centelha</span>
-      <span class="hidden sm:inline text-brand-dark/20">·</span>
-      <span class="flex items-center gap-2"><i class="fa-solid fa-newspaper text-brand-accent"></i> Reportagem no O Povo+</span>
+    <p class="text-center text-[10px] font-extrabold uppercase tracking-[0.25em] text-brand-dark/40 mb-8">
+      Reconhecido por
+    </p>
+
+    <div class="credential-strip">
+
+      <a href="https://www.huawei.com" target="_blank" rel="noopener" class="flex flex-col items-center gap-2 group">
+        <div class="flex items-center gap-2">
+          <svg viewBox="0 0 100 70" class="h-8 lg:h-10 w-auto" aria-hidden="true">
+            <defs>
+              <linearGradient id="hwGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#E82A2A"/>
+                <stop offset="100%" stop-color="#CF0A2C"/>
+              </linearGradient>
+            </defs>
+            <g fill="url(#hwGrad)">
+              <path d="M50 58 C46 44 40 26 34 8 C40 10 46 22 50 40 Z" opacity=".95"/>
+              <path d="M50 58 C54 44 60 26 66 8 C60 10 54 22 50 40 Z" opacity=".95"/>
+              <path d="M50 58 C42 46 30 34 18 24 C28 26 42 38 50 50 Z" opacity=".9"/>
+              <path d="M50 58 C58 46 70 34 82 24 C72 26 58 38 50 50 Z" opacity=".9"/>
+              <path d="M50 58 C40 50 24 46 8 46 C22 50 40 56 50 60 Z" opacity=".85"/>
+              <path d="M50 58 C60 50 76 46 92 46 C78 50 60 56 50 60 Z" opacity=".85"/>
+              <ellipse cx="50" cy="58" rx="9" ry="7" opacity=".95"/>
+            </g>
+          </svg>
+          <span class="text-2xl lg:text-3xl font-black tracking-tight" style="color:#CF0A2C; letter-spacing:-0.02em;">HUAWEI</span>
+        </div>
+        <span class="text-[10px] font-bold uppercase tracking-[0.15em] text-brand-accent">
+          3º lugar · HDC LATAM 2025
+        </span>
+      </a>
+
+      <div class="hidden sm:block w-px h-10 bg-brand-dark/10"></div>
+
+      <div class="flex flex-col items-center gap-1.5 logo-mark logo-mark-muted">
+        <span class="text-xl lg:text-2xl font-black tracking-tight text-brand-green">IFCE</span>
+        <span class="text-[9px] font-bold uppercase tracking-[0.15em] text-brand-dark/50">Campus Fortaleza</span>
+      </div>
+
+      <div class="hidden sm:block w-px h-10 bg-brand-dark/10"></div>
+
+      <div class="flex flex-col items-center gap-1.5 logo-mark logo-mark-muted">
+        <div class="flex items-center gap-1.5">
+          <i class="fa-solid fa-lightbulb text-brand-accent text-sm"></i>
+          <span class="text-base lg:text-lg font-extrabold tracking-tight text-brand-dark">Centelha</span>
+        </div>
+        <span class="text-[9px] font-bold uppercase tracking-[0.15em] text-brand-dark/50">Programa de Inovação</span>
+      </div>
+
+      <div class="hidden sm:block w-px h-10 bg-brand-dark/10"></div>
+
+      <div class="flex flex-col items-center gap-1.5 logo-mark logo-mark-muted">
+        <span class="text-base lg:text-lg font-black tracking-tight text-brand-dark">
+          O POVO<span class="text-brand-accent">+</span>
+        </span>
+        <span class="text-[9px] font-bold uppercase tracking-[0.15em] text-brand-dark/50">Na imprensa</span>
+      </div>
+
     </div>
   </div>
 </section>
 
 
-<!-- Problema -->
 <section id="problema" class="relative py-24 lg:py-28 bg-brand-dark text-brand-cream overflow-hidden">
   <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
     <div class="grid lg:grid-cols-2 gap-14 items-center">
@@ -430,7 +492,6 @@ input[type="radio"]:focus-visible + div {
 </section>
 
 
-<!-- Solução -->
 <section id="solucao" class="py-24 lg:py-28 bg-brand-cream">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
 
@@ -517,7 +578,6 @@ input[type="radio"]:focus-visible + div {
 </section>
 
 
-<!-- Tração -->
 <section id="tracao" class="py-24 lg:py-28 bg-white">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
     <div class="max-w-3xl mx-auto text-center mb-14">
@@ -642,7 +702,6 @@ input[type="radio"]:focus-visible + div {
 </section>
 
 
-<!-- Mercado -->
 <section class="py-20 lg:py-24 bg-brand-peach/40">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
     <div class="max-w-3xl mx-auto text-center mb-12">
@@ -678,7 +737,6 @@ input[type="radio"]:focus-visible + div {
 </section>
 
 
-<!-- Planos -->
 <section id="planos" class="py-24 lg:py-28 bg-white">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
     <div class="max-w-3xl mx-auto text-center mb-14">
@@ -763,7 +821,6 @@ input[type="radio"]:focus-visible + div {
 </section>
 
 
-<!-- Equipe -->
 <section id="equipe" class="py-24 lg:py-28 bg-brand-cream">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
 
@@ -781,75 +838,114 @@ input[type="radio"]:focus-visible + div {
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
-      <div class="reveal card-lift bg-white rounded-3xl p-6 border border-brand-dark/5">
+      <article class="reveal card-lift bg-white rounded-3xl p-6 border border-brand-dark/5">
         <div class="flex items-center gap-4">
           <div class="w-14 h-14 rounded-2xl bg-brand-green grid place-items-center text-white font-extrabold text-lg shrink-0">LG</div>
           <div class="min-w-0">
-            <h3 class="font-bold text-brand-dark truncate">Lucas Gonzaga</h3>
-            <p class="text-xs text-brand-green font-bold mt-0.5">Liderança técnica & IA</p>
+            <h3 class="font-bold text-brand-dark leading-tight">Lucas Gonzaga Andrade</h3>
+            <p class="text-xs text-brand-green font-bold mt-1">Liderança técnica e IA</p>
           </div>
         </div>
         <p class="text-xs text-brand-dark/60 mt-4 leading-relaxed font-medium">Backend, regras de negócio e validação técnica em campo.</p>
-      </div>
+        <div class="flex items-center gap-3 mt-5 pt-4 border-t border-brand-dark/5">
+          <a href="#" aria-label="LinkedIn de Lucas Gonzaga Andrade" class="team-social text-brand-dark/40 hover:text-brand-green">
+            <i class="fa-brands fa-linkedin-in text-sm"></i>
+          </a>
+          <a href="https://instagram.com/cashewcare" target="_blank" rel="noopener" aria-label="Instagram do CashewCare" class="team-social text-brand-dark/40 hover:text-brand-accent">
+            <i class="fa-brands fa-instagram text-sm"></i>
+          </a>
+        </div>
+      </article>
 
-      <div class="reveal reveal-delay-1 card-lift bg-white rounded-3xl p-6 border border-brand-dark/5">
+      <article class="reveal reveal-delay-1 card-lift bg-white rounded-3xl p-6 border border-brand-dark/5">
         <div class="flex items-center gap-4">
           <div class="w-14 h-14 rounded-2xl bg-brand-accent grid place-items-center text-white font-extrabold text-lg shrink-0">LR</div>
           <div class="min-w-0">
-            <h3 class="font-bold text-brand-dark truncate">Letícia Ramos</h3>
-            <p class="text-xs text-brand-accent font-bold mt-0.5">Pesquisa & Negócios</p>
+            <h3 class="font-bold text-brand-dark leading-tight">Letícia dos Santos Ramos</h3>
+            <p class="text-xs text-brand-accent font-bold mt-1">Engenharia e IoT</p>
           </div>
         </div>
-        <p class="text-xs text-brand-dark/60 mt-4 leading-relaxed font-medium">Pesquisa de mercado, personas e validação de proposta de valor.</p>
-      </div>
+        <p class="text-xs text-brand-dark/60 mt-4 leading-relaxed font-medium">Sensores, hardware embarcado e integração de dispositivos em campo.</p>
+        <div class="flex items-center gap-3 mt-5 pt-4 border-t border-brand-dark/5">
+          <a href="#" aria-label="LinkedIn de Letícia dos Santos Ramos" class="team-social text-brand-dark/40 hover:text-brand-green">
+            <i class="fa-brands fa-linkedin-in text-sm"></i>
+          </a>
+          <a href="https://instagram.com/cashewcare" target="_blank" rel="noopener" aria-label="Instagram do CashewCare" class="team-social text-brand-dark/40 hover:text-brand-accent">
+            <i class="fa-brands fa-instagram text-sm"></i>
+          </a>
+        </div>
+      </article>
 
-      <div class="reveal reveal-delay-2 card-lift bg-white rounded-3xl p-6 border border-brand-dark/5">
+      <article class="reveal reveal-delay-2 card-lift bg-white rounded-3xl p-6 border border-brand-dark/5">
         <div class="flex items-center gap-4">
           <div class="w-14 h-14 rounded-2xl bg-brand-green grid place-items-center text-white font-extrabold text-lg shrink-0">GF</div>
           <div class="min-w-0">
-            <h3 class="font-bold text-brand-dark truncate">Gabriel Fernandes</h3>
-            <p class="text-xs text-brand-green font-bold mt-0.5">Desenvolvimento Fullstack</p>
+            <h3 class="font-bold text-brand-dark leading-tight">Gabriel Assunção Fernandes</h3>
+            <p class="text-xs text-brand-green font-bold mt-1">Desenvolvimento Fullstack</p>
           </div>
         </div>
         <p class="text-xs text-brand-dark/60 mt-4 leading-relaxed font-medium">Frontend, backend, APIs e integração de serviços.</p>
-      </div>
+        <div class="flex items-center gap-3 mt-5 pt-4 border-t border-brand-dark/5">
+          <a href="#" aria-label="LinkedIn de Gabriel Assunção Fernandes" class="team-social text-brand-dark/40 hover:text-brand-green">
+            <i class="fa-brands fa-linkedin-in text-sm"></i>
+          </a>
+          <a href="https://instagram.com/cashewcare" target="_blank" rel="noopener" aria-label="Instagram do CashewCare" class="team-social text-brand-dark/40 hover:text-brand-accent">
+            <i class="fa-brands fa-instagram text-sm"></i>
+          </a>
+        </div>
+      </article>
 
-      <div class="reveal reveal-delay-1 card-lift bg-white rounded-3xl p-6 border border-brand-dark/5">
+      <article class="reveal reveal-delay-1 card-lift bg-white rounded-3xl p-6 border border-brand-dark/5">
         <div class="flex items-center gap-4">
           <div class="w-14 h-14 rounded-2xl bg-brand-dark grid place-items-center text-white font-extrabold text-lg shrink-0">RC</div>
           <div class="min-w-0">
-            <h3 class="font-bold text-brand-dark truncate">Rafael Carneiro</h3>
-            <p class="text-xs text-brand-dark/70 font-bold mt-0.5">Engenharia & IoT</p>
+            <h3 class="font-bold text-brand-dark leading-tight">Rafael Mendes de Deus Carneiro</h3>
+            <p class="text-xs text-brand-dark/70 font-bold mt-1">Gestão e negócios</p>
           </div>
         </div>
-        <p class="text-xs text-brand-dark/60 mt-4 leading-relaxed font-medium">Arquitetura em nuvem, CI/CD, containers e APIs.</p>
-      </div>
+        <p class="text-xs text-brand-dark/60 mt-4 leading-relaxed font-medium">Estratégia comercial, parcerias e modelo de negócio.</p>
+        <div class="flex items-center gap-3 mt-5 pt-4 border-t border-brand-dark/5">
+          <a href="#" aria-label="LinkedIn de Rafael Mendes de Deus Carneiro" class="team-social text-brand-dark/40 hover:text-brand-green">
+            <i class="fa-brands fa-linkedin-in text-sm"></i>
+          </a>
+          <a href="https://instagram.com/cashewcare" target="_blank" rel="noopener" aria-label="Instagram do CashewCare" class="team-social text-brand-dark/40 hover:text-brand-accent">
+            <i class="fa-brands fa-instagram text-sm"></i>
+          </a>
+        </div>
+      </article>
 
-      <div class="reveal reveal-delay-2 card-lift bg-white rounded-3xl p-6 border border-brand-dark/5">
+      <article class="reveal reveal-delay-2 card-lift bg-white rounded-3xl p-6 border border-brand-dark/5">
         <div class="flex items-center gap-4">
           <div class="w-14 h-14 rounded-2xl bg-brand-peach grid place-items-center text-brand-dark font-extrabold text-lg shrink-0">GC</div>
           <div class="min-w-0">
-            <h3 class="font-bold text-brand-dark truncate">Giovanna Castro</h3>
-            <p class="text-xs text-brand-dark/70 font-bold mt-0.5">UX/UI & Frontend</p>
+            <h3 class="font-bold text-brand-dark leading-tight">Giovanna Bandeira de Castro</h3>
+            <p class="text-xs text-brand-dark/70 font-bold mt-1">UX/UI & Frontend</p>
           </div>
         </div>
         <p class="text-xs text-brand-dark/60 mt-4 leading-relaxed font-medium">Jornada do usuário, protótipos, design system e usabilidade.</p>
-      </div>
+        <div class="flex items-center gap-3 mt-5 pt-4 border-t border-brand-dark/5">
+          <a href="#" aria-label="LinkedIn de Giovanna Bandeira de Castro" class="team-social text-brand-dark/40 hover:text-brand-green">
+            <i class="fa-brands fa-linkedin-in text-sm"></i>
+          </a>
+          <a href="https://instagram.com/cashewcare" target="_blank" rel="noopener" aria-label="Instagram do CashewCare" class="team-social text-brand-dark/40 hover:text-brand-accent">
+            <i class="fa-brands fa-instagram text-sm"></i>
+          </a>
+        </div>
+      </article>
 
-      <div class="reveal reveal-delay-3 card-lift bg-brand-green text-white rounded-3xl p-6 flex flex-col justify-center">
+      <article class="reveal reveal-delay-3 card-lift bg-brand-green text-white rounded-3xl p-6 flex flex-col justify-center">
         <i class="fa-solid fa-handshake-angle text-brand-peach text-2xl mb-3"></i>
         <h3 class="font-bold text-lg leading-snug">Quer fazer parte?</h3>
         <p class="text-sm text-white/80 mt-2 leading-relaxed font-medium">Buscamos parceiros, cooperativas e investidores para escalar o CashewCare.</p>
         <a href="#contato" class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-peach hover:gap-3 transition-all">
           Fale conosco <i class="fa-solid fa-arrow-right text-xs"></i>
         </a>
-      </div>
+      </article>
     </div>
   </div>
 </section>
 
 
-<!-- Contato -->
 <section id="contato" class="relative py-24 lg:py-28 bg-brand-dark text-brand-cream overflow-hidden">
   <div class="relative max-w-7xl mx-auto px-5 lg:px-8">
     <div class="grid lg:grid-cols-2 gap-14 items-start">
@@ -884,6 +980,15 @@ input[type="radio"]:focus-visible + div {
             <div>
               <p class="text-xs text-brand-cream/60 font-semibold">Onde estamos</p>
               <p class="text-sm font-bold text-white">IFCE — Campus Fortaleza, CE</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="w-11 h-11 rounded-xl bg-white/5 grid place-items-center shrink-0">
+              <i class="fa-brands fa-instagram text-brand-peach"></i>
+            </span>
+            <div>
+              <p class="text-xs text-brand-cream/60 font-semibold">Instagram</p>
+              <a href="https://instagram.com/cashewcare" target="_blank" rel="noopener" class="text-sm font-bold text-white hover:text-brand-peach transition">@cashewcare</a>
             </div>
           </div>
           <div class="flex items-center gap-4">
@@ -978,7 +1083,6 @@ input[type="radio"]:focus-visible + div {
 </section>
 
 
-<!-- Footer -->
 <footer class="bg-brand-dark text-brand-cream/70 border-t border-white/5">
   <div class="max-w-7xl mx-auto px-5 lg:px-8 py-14">
     <div class="grid md:grid-cols-4 gap-10">
@@ -996,9 +1100,17 @@ input[type="radio"]:focus-visible + div {
           Plataforma mobile de agricultura de precisão que usa Inteligência Artificial e Visão Computacional
           para diagnosticar pragas e doenças do cajueiro.
         </p>
+
+        <p class="text-xs text-brand-cream/50 mt-4 font-medium leading-relaxed">
+          Projeto do <span class="text-brand-cream/70 font-semibold">IFCE — Campus Fortaleza</span><br>
+          3º lugar no HDC LATAM 2025 · Competição da Huawei
+        </p>
+
         <div class="flex items-center gap-2.5 mt-6">
-          <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-white/5 grid place-items-center hover:bg-brand-green hover:text-white transition">
+          <a href="https://instagram.com/cashewcare" target="_blank" rel="noopener" aria-label="Instagram @cashewcare"
+             class="flex items-center gap-2 h-10 px-3.5 rounded-xl bg-white/5 hover:bg-brand-green hover:text-white transition text-xs font-bold">
             <i class="fa-brands fa-instagram text-sm"></i>
+            <span>@cashewcare</span>
           </a>
           <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-xl bg-white/5 grid place-items-center hover:bg-brand-green hover:text-white transition">
             <i class="fa-brands fa-linkedin-in text-sm"></i>
@@ -1029,7 +1141,7 @@ input[type="radio"]:focus-visible + div {
           <li><a href="#" class="hover:text-brand-peach transition flex items-center gap-2"><i class="fa-brands fa-github text-xs"></i> Repositório no GitHub</a></li>
           <li><a href="#" class="hover:text-brand-peach transition flex items-center gap-2"><i class="fa-solid fa-file-pdf text-xs"></i> Pitch Deck (PDF)</a></li>
           <li><a href="#" class="hover:text-brand-peach transition flex items-center gap-2"><i class="fa-solid fa-newspaper text-xs"></i> Matéria no O Povo+</a></li>
-          <li><a href="#" class="hover:text-brand-peach transition flex items-center gap-2"><i class="fa-solid fa-envelope text-xs"></i> contato@cashewcare.com.br</a></li>
+          <li><a href="mailto:contato@cashewcare.com.br" class="hover:text-brand-peach transition flex items-center gap-2"><i class="fa-solid fa-envelope text-xs"></i> contato@cashewcare.com.br</a></li>
         </ul>
       </div>
     </div>
