@@ -5,11 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>CashewCare — Diagnóstico Inteligente do Cajueiro</title>
 <meta name="description" content="Visão computacional que diagnostica pragas e doenças do cajueiro a partir de uma foto. Menos perdas, menos defensivos, mais renda no campo." />
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="64x64" href="img/favicon-64.png" />
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+<meta name="theme-color" content="#006F47" />
+<meta property="og:title" content="CashewCare — Diagnóstico Inteligente do Cajueiro" />
+<meta property="og:description" content="IA que diagnostica pragas e doenças do cajueiro por foto. 3º lugar na América Latina no Huawei Developer Competition 2025." />
+<meta property="og:image" content="img/premiacao.jpg" />
+<meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
 <script>
 tailwind.config = {
   theme: {
@@ -91,6 +99,19 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
 .logo-mark-muted { opacity: .55; filter: grayscale(1); }
 .logo-mark-muted:hover { opacity: 1; filter: grayscale(0); }
 
+.gal-item { position: relative; overflow: hidden; border-radius: 1.25rem; cursor: zoom-in; margin: 0; background: #262626; }
+.gal-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.16,1,.3,1); }
+.gal-item:hover img { transform: scale(1.04); }
+.gal-item figcaption { position: absolute; left: .75rem; bottom: .75rem; font-size: 11px; font-weight: 700; color: #fff; background: rgba(23,23,23,.6); backdrop-filter: blur(6px); padding: .35rem .7rem; border-radius: 99px; }
+.gal-item:focus-visible { outline: 3px solid #FED8A7; outline-offset: 3px; }
+body.modal-open { overflow: hidden; }
+[hidden] { display: none !important; }
+.qr-slot { position: relative; width: 200px; height: 200px; border-radius: 1.25rem; background: #fff; border: 2px dashed rgba(23,23,23,.15); display: grid; place-items: center; overflow: hidden; }
+.qr-slot img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
+.qr-slot .qr-ph { display: none; flex-direction: column; align-items: center; gap: .6rem; color: rgba(23,23,23,.35); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; }
+.qr-slot.is-empty img { display: none; }
+.qr-slot.is-empty .qr-ph { display: flex; }
+.qr-slot:not(.is-empty) { border-style: solid; border-color: rgba(23,23,23,.06); }
 .team-social { transition: color .2s ease, transform .2s ease; }
 .team-social:hover { transform: translateY(-1px); }
 </style>
@@ -104,30 +125,30 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
   <nav class="max-w-7xl mx-auto px-5 lg:px-8">
     <div class="flex items-center justify-between h-16 lg:h-20">
       <a href="#hero" class="flex items-center gap-2.5 shrink-0">
-        <span class="w-9 h-9 rounded-xl bg-brand-green grid place-items-center text-brand-cream">
-          <i class="fa-solid fa-leaf text-[15px]"></i>
-        </span>
+        <img src="img/caju.png" alt="" class="w-9 h-9 object-contain" width="36" height="36" />
         <span class="font-extrabold text-lg tracking-tight text-brand-dark">
           Cashew<span class="text-brand-green">Care</span>
         </span>
       </a>
 
-      <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-brand-dark/70">
+      <div class="hidden lg:flex items-center gap-5 xl:gap-8 text-sm font-medium text-brand-dark/70">
         <a href="#problema" class="nav-link hover:text-brand-green transition">Problema</a>
         <a href="#solucao"  class="nav-link hover:text-brand-green transition">Solução</a>
         <a href="#tracao"   class="nav-link hover:text-brand-green transition">Tração</a>
-        <a href="#planos"   class="nav-link hover:text-brand-green transition">Planos</a>
+        <a href="#hdc"      class="nav-link hover:text-brand-green transition">HDC 2025</a>
+        <a href="#baixar"   class="nav-link hover:text-brand-green transition">Baixar app</a>
         <a href="#equipe"   class="nav-link hover:text-brand-green transition">Equipe</a>
+        <button type="button" data-open-planos class="nav-link hover:text-brand-green transition">Planos</button>
       </div>
 
       <div class="flex items-center gap-3 lg:gap-4">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Instituto_Federal_do_Cear%C3%A1_-_Marca_Vertical_2015.svg"
-             alt="IFCE — Campus Fortaleza"
+             alt="IFCE — Campus Fortaleza" onerror="this.remove()"
              class="hidden lg:block h-9 w-auto opacity-70 hover:opacity-100 transition logo-mark"
              loading="lazy" />
 
-        <a href="https://instagram.com/cashewcare" target="_blank" rel="noopener"
-           aria-label="Instagram do CashewCare — @cashewcare"
+        <a href="https://www.instagram.com/cashewcareoficial/" target="_blank" rel="noopener"
+           aria-label="Instagram do CashewCare — @cashewcareoficial"
            class="hidden lg:grid w-9 h-9 place-items-center rounded-xl text-brand-dark/60 hover:text-brand-accent hover:bg-brand-accent/5 transition">
           <i class="fa-brands fa-instagram text-lg"></i>
         </a>
@@ -152,26 +173,29 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
       <a href="#problema" class="mobile-link py-3 border-b border-brand-dark/5 flex items-center gap-3"><i class="fa-solid fa-triangle-exclamation w-5 text-brand-accent"></i>Problema</a>
       <a href="#solucao"  class="mobile-link py-3 border-b border-brand-dark/5 flex items-center gap-3"><i class="fa-solid fa-lightbulb w-5 text-brand-accent"></i>Solução</a>
       <a href="#tracao"   class="mobile-link py-3 border-b border-brand-dark/5 flex items-center gap-3"><i class="fa-solid fa-chart-line w-5 text-brand-accent"></i>Tração</a>
-      <a href="#planos"   class="mobile-link py-3 border-b border-brand-dark/5 flex items-center gap-3"><i class="fa-solid fa-tags w-5 text-brand-accent"></i>Planos</a>
+      <a href="#hdc"      class="mobile-link py-3 border-b border-brand-dark/5 flex items-center gap-3"><i class="fa-solid fa-trophy w-5 text-brand-accent"></i>HDC 2025</a>
+      <a href="#baixar"   class="mobile-link py-3 border-b border-brand-dark/5 flex items-center gap-3"><i class="fa-solid fa-mobile-screen-button w-5 text-brand-accent"></i>Baixar app</a>
       <a href="#equipe"   class="mobile-link py-3 border-b border-brand-dark/5 flex items-center gap-3"><i class="fa-solid fa-users w-5 text-brand-accent"></i>Equipe</a>
+      <button type="button" data-open-planos class="py-3 border-b border-brand-dark/5 flex items-center gap-3 text-left"><i class="fa-solid fa-tags w-5 text-brand-accent"></i>Planos</button>
 
       <div class="flex items-center justify-between mt-4 px-1">
         <div class="flex items-center gap-3">
           <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Instituto_Federal_do_Cear%C3%A1_-_Marca_Vertical_2015.svg"
-               alt="IFCE — Campus Fortaleza" class="h-8 w-auto opacity-70" loading="lazy" />
+               alt="IFCE — Campus Fortaleza" onerror="this.remove()" class="h-8 w-auto opacity-70" loading="lazy" />
           <span class="text-[10px] font-bold uppercase tracking-wider text-brand-dark/40">Campus Fortaleza</span>
         </div>
-        <a href="https://instagram.com/cashewcare" target="_blank" rel="noopener"
-           aria-label="Instagram @cashewcare"
+        <a href="https://www.instagram.com/cashewcareoficial/" target="_blank" rel="noopener"
+           aria-label="Instagram @cashewcareoficial"
            class="flex items-center gap-2 text-brand-dark/60 hover:text-brand-accent transition text-sm">
           <i class="fa-brands fa-instagram text-lg"></i>
-          <span class="font-bold text-xs">@cashewcare</span>
+          <span class="font-bold text-xs">@cashewcareoficial</span>
         </a>
       </div>
 
       <a href="#contato"  class="mobile-link mt-4 bg-brand-accent text-white text-center font-bold py-3.5 rounded-full">
         <i class="fa-solid fa-comment-dots mr-2"></i>Falar com o time
       </a>
+
     </div>
   </div>
 </header>
@@ -195,7 +219,7 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
         </p>
 
         <div class="reveal reveal-delay-2 mt-8 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-          <a href="#contato"
+          <a href="#baixar"
              class="group inline-flex items-center justify-center gap-2.5 bg-brand-accent text-white font-bold px-7 py-4 rounded-full hover:bg-brand-dark transition-all duration-300">
             <i class="fa-solid fa-rocket text-sm"></i>
             Quero ser um tester
@@ -244,7 +268,7 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
               </div>
 
               <div class="bg-brand-green px-5 py-4 flex items-center justify-between">
-                <span class="text-white font-bold text-sm">Início</span>
+                <span class="flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-white grid place-items-center"><img src="img/caju.png" alt="" class="w-5 h-5 object-contain"></span><span class="text-white font-bold text-sm">CashewCare</span></span>
                 <i class="fa-solid fa-magnifying-glass text-white/80 text-xs"></i>
               </div>
 
@@ -253,8 +277,8 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
                 <div class="bg-brand-peach rounded-2xl p-4 border border-brand-accent/10">
                   <div class="flex items-start gap-3">
                     <div class="flex-1">
-                      <p class="text-[13px] font-extrabold text-brand-dark leading-snug">Amplie seu cajueiro!</p>
-                      <p class="text-[10.5px] text-brand-dark/70 mt-1 leading-snug">Primeiro mês de plano profissional com 95% off</p>
+                      <p class="text-[13px] font-extrabold text-brand-dark leading-snug">Cuide do seu cajueiro!</p>
+                      <p class="text-[10.5px] text-brand-dark/70 mt-1 leading-snug">Faça um diagnóstico por foto em segundos</p>
                     </div>
                     <div class="w-9 h-9 rounded-full bg-white/50 grid place-items-center shrink-0">
                       <i class="fa-solid fa-seedling text-brand-accent text-xs"></i>
@@ -358,67 +382,15 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
 </section>
 
 
-<section aria-label="Credenciais e reconhecimentos" class="py-12 lg:py-14 border-y border-brand-dark/5 bg-white/60">
+<section aria-label="Credenciais e reconhecimentos" class="py-8 border-y border-brand-dark/5 bg-white/60">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
-    <p class="text-center text-[10px] font-extrabold uppercase tracking-[0.25em] text-brand-dark/40 mb-8">
-      Reconhecido por
-    </p>
-
-    <div class="credential-strip">
-
-      <a href="https://www.huawei.com" target="_blank" rel="noopener" class="flex flex-col items-center gap-2 group">
-        <div class="flex items-center gap-2">
-          <svg viewBox="0 0 100 70" class="h-8 lg:h-10 w-auto" aria-hidden="true">
-            <defs>
-              <linearGradient id="hwGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#E82A2A"/>
-                <stop offset="100%" stop-color="#CF0A2C"/>
-              </linearGradient>
-            </defs>
-            <g fill="url(#hwGrad)">
-              <path d="M50 58 C46 44 40 26 34 8 C40 10 46 22 50 40 Z" opacity=".95"/>
-              <path d="M50 58 C54 44 60 26 66 8 C60 10 54 22 50 40 Z" opacity=".95"/>
-              <path d="M50 58 C42 46 30 34 18 24 C28 26 42 38 50 50 Z" opacity=".9"/>
-              <path d="M50 58 C58 46 70 34 82 24 C72 26 58 38 50 50 Z" opacity=".9"/>
-              <path d="M50 58 C40 50 24 46 8 46 C22 50 40 56 50 60 Z" opacity=".85"/>
-              <path d="M50 58 C60 50 76 46 92 46 C78 50 60 56 50 60 Z" opacity=".85"/>
-              <ellipse cx="50" cy="58" rx="9" ry="7" opacity=".95"/>
-            </g>
-          </svg>
-          <span class="text-2xl lg:text-3xl font-black tracking-tight" style="color:#CF0A2C; letter-spacing:-0.02em;">HUAWEI</span>
-        </div>
-        <span class="text-[10px] font-bold uppercase tracking-[0.15em] text-brand-accent">
-          3º lugar · HDC LATAM 2025
-        </span>
-      </a>
-
-      <div class="hidden sm:block w-px h-10 bg-brand-dark/10"></div>
-
-      <div class="flex flex-col items-center gap-1.5 logo-mark logo-mark-muted">
-        <span class="text-xl lg:text-2xl font-black tracking-tight text-brand-green">IFCE</span>
-        <span class="text-[9px] font-bold uppercase tracking-[0.15em] text-brand-dark/50">Campus Fortaleza</span>
-      </div>
-
-      <div class="hidden sm:block w-px h-10 bg-brand-dark/10"></div>
-
-      <div class="flex flex-col items-center gap-1.5 logo-mark logo-mark-muted">
-        <div class="flex items-center gap-1.5">
-          <i class="fa-solid fa-lightbulb text-brand-accent text-sm"></i>
-          <span class="text-base lg:text-lg font-extrabold tracking-tight text-brand-dark">Centelha</span>
-        </div>
-        <span class="text-[9px] font-bold uppercase tracking-[0.15em] text-brand-dark/50">Programa de Inovação</span>
-      </div>
-
-      <div class="hidden sm:block w-px h-10 bg-brand-dark/10"></div>
-
-      <div class="flex flex-col items-center gap-1.5 logo-mark logo-mark-muted">
-        <span class="text-base lg:text-lg font-black tracking-tight text-brand-dark">
-          O POVO<span class="text-brand-accent">+</span>
-        </span>
-        <span class="text-[9px] font-bold uppercase tracking-[0.15em] text-brand-dark/50">Na imprensa</span>
-      </div>
-
-    </div>
+    <ul class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-sm font-semibold text-brand-dark/60">
+      <li><a href="#hdc" class="flex items-center gap-2.5 hover:text-brand-dark transition"><i class="fa-solid fa-trophy text-brand-accent"></i>3º lugar · HDC LATAM 2025</a></li>
+      <li aria-hidden="true" class="hidden sm:block w-1 h-1 rounded-full bg-brand-dark/15"></li>
+      <li class="flex items-center gap-2.5"><i class="fa-solid fa-graduation-cap text-brand-green"></i>IFCE Fortaleza</li>
+      <li aria-hidden="true" class="hidden sm:block w-1 h-1 rounded-full bg-brand-dark/15"></li>
+      <li><a href="https://mais.opovo.com.br/jornal/reportagem/2025/10/16/futuro-agora-mais-de-10-mil-cearenses-formados-em-ia-dados-e-cloud-entre-2023-e-2025.html" target="_blank" rel="noopener" class="flex items-center gap-2.5 hover:text-brand-dark transition"><i class="fa-solid fa-newspaper text-brand-accent"></i>Reportagem no O Povo+</a></li>
+    </ul>
   </div>
 </section>
 
@@ -578,6 +550,71 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
 </section>
 
 
+
+<section id="baixar" class="py-24 lg:py-28 bg-brand-peach/40">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center mb-14">
+      <span class="reveal inline-flex items-center gap-2 text-brand-green text-xs font-bold uppercase tracking-[0.18em] mb-5">
+        <span class="w-8 h-px bg-brand-green"></span> Baixe o app <span class="w-8 h-px bg-brand-green"></span>
+      </span>
+      <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-brand-dark leading-[1.1]">
+        Seja um dos <span class="text-gradient">primeiros testers.</span>
+      </h2>
+      <p class="reveal reveal-delay-2 mt-5 text-lg text-brand-dark/65 font-medium">
+        Aponte a câmera do celular para o QR code e instale o CashewCare.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+
+      <!-- ANDROID: troque img/qr-android.png pelo QR code e coloque o link do APK em data-download-url -->
+      <article class="reveal card-lift bg-white rounded-3xl p-8 border border-brand-dark/5 flex flex-col items-center text-center">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-11 h-11 rounded-xl bg-brand-green/10 grid place-items-center"><i class="fa-brands fa-android text-brand-green text-xl"></i></span>
+          <div class="text-left">
+            <h3 class="font-bold text-brand-dark leading-tight">Android</h3>
+            <p class="text-xs text-brand-green font-bold">Disponível · APK</p>
+          </div>
+        </div>
+        <div class="qr-slot">
+          <img src="img/qr-android.png" alt="QR code para baixar o CashewCare para Android" width="200" height="200" />
+          <span class="qr-ph"><i class="fa-solid fa-qrcode text-4xl"></i>QR code Android</span>
+        </div>
+        <a data-download-url="" href="#contato"
+           class="mt-7 inline-flex items-center gap-2.5 bg-brand-green text-white font-bold px-6 py-3.5 rounded-full hover:bg-brand-dark transition">
+          <i class="fa-solid fa-download text-sm"></i> Baixar APK
+        </a>
+        <p class="mt-4 text-[11px] text-brand-dark/50 font-medium leading-relaxed max-w-xs">
+          Ao instalar, o Android pode pedir para permitir “instalar apps de fontes desconhecidas”. É normal para APKs fora da Play Store.
+        </p>
+      </article>
+
+      <!-- iOS: quando existir, troque img/qr-ios.png e mude o selo "Em breve" -->
+      <article class="reveal reveal-delay-1 card-lift bg-white rounded-3xl p-8 border border-brand-dark/5 flex flex-col items-center text-center">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-11 h-11 rounded-xl bg-brand-dark/5 grid place-items-center"><i class="fa-brands fa-apple text-brand-dark text-xl"></i></span>
+          <div class="text-left">
+            <h3 class="font-bold text-brand-dark leading-tight">iOS</h3>
+            <p class="text-xs text-brand-accent font-bold">Em breve</p>
+          </div>
+        </div>
+        <div class="qr-slot">
+          <img src="img/qr-ios.png" alt="QR code para baixar o CashewCare para iPhone" width="200" height="200" />
+          <span class="qr-ph"><i class="fa-solid fa-qrcode text-4xl"></i>QR code iOS<br><span class="font-medium normal-case tracking-normal">em breve</span></span>
+        </div>
+        <a href="#contato"
+           class="mt-7 inline-flex items-center gap-2.5 border-2 border-brand-dark/10 text-brand-dark font-bold px-6 py-3 rounded-full hover:border-brand-green hover:text-brand-green transition">
+          <i class="fa-regular fa-bell text-sm"></i> Avise-me quando lançar
+        </a>
+        <p class="mt-4 text-[11px] text-brand-dark/50 font-medium leading-relaxed max-w-xs">
+          Deixe seu contato e avisamos por e-mail assim que a versão para iPhone estiver disponível.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
 <section id="tracao" class="py-24 lg:py-28 bg-white">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
     <div class="max-w-3xl mx-auto text-center mb-14">
@@ -674,16 +711,17 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
       </div>
 
       <div class="lg:col-span-2 space-y-5">
-        <div class="reveal reveal-delay-1 bg-brand-dark text-brand-cream rounded-3xl p-7 relative overflow-hidden">
+        <a href="https://mais.opovo.com.br/jornal/reportagem/2025/10/16/futuro-agora-mais-de-10-mil-cearenses-formados-em-ia-dados-e-cloud-entre-2023-e-2025.html" target="_blank" rel="noopener" class="reveal reveal-delay-1 block card-lift bg-brand-dark text-brand-cream rounded-3xl p-7 relative overflow-hidden group">
           <i class="fa-solid fa-quote-left absolute top-5 right-6 text-5xl text-white/5"></i>
           <span class="text-[10px] font-extrabold uppercase tracking-[0.2em] text-brand-accent">Na imprensa</span>
           <p class="mt-3 font-bold text-white leading-snug">
             "Futuro agora: Mais de 10 mil cearenses formados em IA, dados e cloud entre 2023 e 2025"
           </p>
           <p class="text-xs text-brand-cream/70 mt-3 flex items-center gap-2 font-semibold">
-            <i class="fa-solid fa-newspaper"></i> O Povo+
+            <i class="fa-solid fa-newspaper"></i> O Povo+ · 16/10/2025
+            <span class="ml-auto inline-flex items-center gap-1.5 text-brand-peach group-hover:gap-2.5 transition-all">Ler matéria <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></span>
           </p>
-        </div>
+        </a>
 
         <div class="reveal reveal-delay-2 bg-brand-peach/50 rounded-3xl p-7 border border-brand-accent/15">
           <div class="flex items-center gap-3 mb-3">
@@ -693,13 +731,92 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
             <h3 class="font-bold text-brand-dark">HDC LATAM 2025</h3>
           </div>
           <p class="text-sm text-brand-dark/70 leading-relaxed font-medium">
-            3º lugar na competição da Huawei, com apresentação no palco e estande oficial.
+            3º lugar na América Latina na competição da Huawei, com apresentação no palco e estande oficial.
           </p>
+          <a href="#hdc" class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand-accent hover:gap-3 transition-all">
+            Ver fotos da competição <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
+
+<section id="hdc" class="py-24 lg:py-28 bg-brand-dark text-brand-cream overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+    <div class="grid lg:grid-cols-[1fr_auto] gap-8 items-end mb-12">
+      <div class="max-w-3xl">
+        <span class="reveal inline-flex items-center gap-2 text-brand-accent text-xs font-bold uppercase tracking-[0.18em] mb-5">
+          <span class="w-8 h-px bg-brand-accent"></span> Huawei Developer Competition 2025
+        </span>
+        <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.1]">
+          3º lugar na<br><span class="text-brand-peach">América Latina.</span>
+        </h2>
+        <p class="reveal reveal-delay-2 mt-5 text-lg text-brand-cream/70 font-medium leading-relaxed">
+          Na final latino-americana da Huawei Developer Competition 2025, em Brasília, o CashewCare subiu ao palco
+          entre equipes de todo o continente e levou o terceiro lugar — com pitch, demonstração do app e estande oficial.
+        </p>
+      </div>
+      <div class="reveal reveal-delay-3 flex flex-wrap gap-2.5 lg:justify-end">
+        <span class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 text-xs font-bold">
+          <i class="fa-regular fa-calendar text-brand-peach"></i> 9 e 10 de outubro de 2025
+        </span>
+        <span class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 text-xs font-bold">
+          <i class="fa-solid fa-location-dot text-brand-peach"></i> Universidade Católica de Brasília (UCB)
+        </span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 grid-flow-row-dense gap-3 lg:gap-4 auto-rows-[150px] sm:auto-rows-[200px] lg:auto-rows-[230px]">
+      <figure class="gal-item reveal col-span-2 row-span-2" data-index="0">
+        <img src="img/premiacao.jpg" alt="Equipes premiadas no palco do Festival Curicaca, segurando os troféus da Huawei Developer Competition 2025" loading="lazy" />
+        <figcaption>Premiação · 3º lugar LATAM</figcaption>
+      </figure>
+      <figure class="gal-item reveal reveal-delay-1 col-span-2" data-index="1">
+        <img src="img/finalistas.jpg" alt="Foto oficial com todas as equipes finalistas no Festival Curicaca" loading="lazy" />
+        <figcaption>Finalistas da América Latina</figcaption>
+      </figure>
+      <figure class="gal-item reveal reveal-delay-2" data-index="2">
+        <img src="img/palco.jpg" alt="Três integrantes da equipe no palco com camisas Huawei" loading="lazy" style="object-position:50% 20%" />
+        <figcaption>No palco</figcaption>
+      </figure>
+      <figure class="gal-item reveal reveal-delay-3" data-index="3">
+        <img src="img/estande.jpg" alt="Integrantes no estande da Huawei" loading="lazy" style="object-position:50% 60%" />
+        <figcaption>Estande Huawei</figcaption>
+      </figure>
+      <figure class="gal-item reveal col-span-2" data-index="4">
+        <img src="img/pitch-equipe.jpg" alt="Apresentação do slide Team Introduction no auditório da UCB" loading="lazy" />
+        <figcaption>Pitch · apresentação do time</figcaption>
+      </figure>
+      <figure class="gal-item reveal reveal-delay-1 col-span-2" data-index="5">
+        <img src="img/pitch-funcoes.jpg" alt="Demonstração das telas do app CashewCare durante o pitch" loading="lazy" />
+        <figcaption>Demo do app</figcaption>
+      </figure>
+    </div>
+
+    <div class="reveal mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 pt-8">
+      <p class="text-sm text-brand-cream/60 font-medium">Mais bastidores da competição no nosso Instagram.</p>
+      <a href="https://www.instagram.com/cashewcareoficial/" target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2.5 bg-white text-brand-dark font-bold text-sm px-6 py-3 rounded-full hover:bg-brand-peach transition">
+        <i class="fa-brands fa-instagram text-base text-brand-accent"></i> @cashewcareoficial
+      </a>
+    </div>
+  </div>
+</section>
+
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada" hidden
+     class="fixed inset-0 z-[70] bg-black/90 flex items-center justify-center p-4">
+  <button type="button" data-lb="close" aria-label="Fechar" class="absolute top-4 right-4 w-11 h-11 rounded-xl grid place-items-center text-white/80 hover:bg-white/10"><i class="fa-solid fa-xmark text-xl"></i></button>
+  <button type="button" data-lb="prev" aria-label="Foto anterior" class="absolute left-2 sm:left-5 w-11 h-11 rounded-xl grid place-items-center text-white/80 hover:bg-white/10"><i class="fa-solid fa-chevron-left"></i></button>
+  <figure class="max-w-6xl w-full flex flex-col items-center">
+    <img id="lbImg" src="" alt="" class="max-h-[80vh] w-auto rounded-xl object-contain" />
+    <figcaption id="lbCap" class="mt-4 text-sm font-semibold text-white/80 text-center"></figcaption>
+  </figure>
+  <button type="button" data-lb="next" aria-label="Próxima foto" class="absolute right-2 sm:right-5 w-11 h-11 rounded-xl grid place-items-center text-white/80 hover:bg-white/10"><i class="fa-solid fa-chevron-right"></i></button>
+</div>
 
 
 <section class="py-20 lg:py-24 bg-brand-peach/40">
@@ -737,88 +854,7 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
 </section>
 
 
-<section id="planos" class="py-24 lg:py-28 bg-white">
-  <div class="max-w-7xl mx-auto px-5 lg:px-8">
-    <div class="max-w-3xl mx-auto text-center mb-14">
-      <span class="reveal inline-flex items-center gap-2 text-brand-green text-xs font-bold uppercase tracking-[0.18em] mb-5">
-        <span class="w-8 h-px bg-brand-green"></span> Planos <span class="w-8 h-px bg-brand-green"></span>
-      </span>
-      <h2 class="reveal reveal-delay-1 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-brand-dark leading-[1.1]">
-        Comece grátis.<br><span class="text-gradient">Cresça no seu ritmo.</span>
-      </h2>
-      <p class="reveal reveal-delay-2 mt-5 text-lg text-brand-dark/65 font-medium">
-        Modelo SaaS freemium — o produtor usa direto e a adoção é ampliada por cooperativas, associações e órgãos públicos.
-      </p>
-    </div>
 
-    <div class="grid lg:grid-cols-3 gap-6 max-w-5xl mx-auto items-start">
-
-      <div class="reveal card-lift bg-brand-cream rounded-3xl p-8 border border-brand-dark/5">
-        <div class="text-xs font-extrabold uppercase tracking-[0.15em] text-brand-dark/50">Gratuito</div>
-        <div class="mt-4 flex items-end gap-1">
-          <span class="text-4xl font-extrabold text-brand-dark">R$ 0</span>
-          <span class="text-brand-dark/50 text-sm mb-1 font-medium">/mês</span>
-        </div>
-        <p class="text-sm text-brand-dark/60 mt-3 leading-relaxed font-medium">Para conhecer a ferramenta e começar a diagnosticar.</p>
-
-        <a href="#contato" class="mt-7 block text-center border-2 border-brand-dark/10 text-brand-dark font-bold py-3.5 rounded-full hover:border-brand-green hover:text-brand-green transition">
-          Começar grátis
-        </a>
-
-        <ul class="mt-7 space-y-3 text-sm">
-          <li class="flex items-start gap-3 text-brand-dark/75 font-medium"><i class="fa-solid fa-check text-brand-green mt-1 text-xs"></i> Fórum da comunidade</li>
-          <li class="flex items-start gap-3 text-brand-dark/75 font-medium"><i class="fa-solid fa-check text-brand-green mt-1 text-xs"></i> Aulas curtas</li>
-          <li class="flex items-start gap-3 text-brand-dark/75 font-medium"><i class="fa-solid fa-check text-brand-green mt-1 text-xs"></i> Recomendações de produtos</li>
-          <li class="flex items-start gap-3 text-brand-dark/75 font-medium"><i class="fa-solid fa-check text-brand-green mt-1 text-xs"></i> Até <strong class="text-brand-dark font-bold">5 diagnósticos</strong> por mês</li>
-        </ul>
-      </div>
-
-      <div class="reveal reveal-delay-1 relative bg-brand-green text-white rounded-3xl p-8 shadow-2xl shadow-brand-green/20 lg:-mt-4">
-        <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-accent text-white text-[10px] font-extrabold uppercase tracking-[0.15em] px-4 py-1.5 rounded-full whitespace-nowrap">
-          Mais popular
-        </span>
-
-        <div class="text-xs font-extrabold uppercase tracking-[0.15em] text-brand-peach">Profissional</div>
-        <div class="mt-4 flex items-end gap-1">
-          <span class="text-4xl font-extrabold">R$ 27,90</span>
-          <span class="text-white/70 text-sm mb-1 font-medium">/mês</span>
-        </div>
-        <p class="text-sm text-white/75 mt-3 leading-relaxed font-medium">Para o produtor que quer acompanhar a safra de perto.</p>
-
-        <a href="#contato" class="mt-7 block text-center bg-brand-accent text-white font-bold py-3.5 rounded-full hover:bg-brand-dark transition">
-          Assinar agora
-        </a>
-
-        <ul class="mt-7 space-y-3 text-sm">
-          <li class="flex items-start gap-3 text-white/90 font-medium"><i class="fa-solid fa-check text-brand-peach mt-1 text-xs"></i> Tudo do plano Gratuito</li>
-          <li class="flex items-start gap-3 text-white/90 font-medium"><i class="fa-solid fa-check text-brand-peach mt-1 text-xs"></i> Até <strong class="text-white font-bold">50 diagnósticos</strong> por mês</li>
-          <li class="flex items-start gap-3 text-white/90 font-medium"><i class="fa-solid fa-check text-brand-peach mt-1 text-xs"></i> Mensagens entre agricultores</li>
-          <li class="flex items-start gap-3 text-white/90 font-medium"><i class="fa-solid fa-check text-brand-peach mt-1 text-xs"></i> Relatórios de safra</li>
-        </ul>
-      </div>
-
-      <div class="reveal reveal-delay-2 card-lift bg-brand-cream rounded-3xl p-8 border border-brand-dark/5">
-        <div class="text-xs font-extrabold uppercase tracking-[0.15em] text-brand-dark/50">Empresarial</div>
-        <div class="mt-4 flex items-end gap-1">
-          <span class="text-4xl font-extrabold text-brand-dark">R$ 119,99</span>
-          <span class="text-brand-dark/50 text-sm mb-1 font-medium">/mês</span>
-        </div>
-        <p class="text-sm text-brand-dark/60 mt-3 leading-relaxed font-medium">Para cooperativas, associações e grandes produtores.</p>
-
-        <a href="#contato" class="mt-7 block text-center border-2 border-brand-dark/10 text-brand-dark font-bold py-3.5 rounded-full hover:border-brand-green hover:text-brand-green transition">
-          Falar com vendas
-        </a>
-
-        <ul class="mt-7 space-y-3 text-sm">
-          <li class="flex items-start gap-3 text-brand-dark/75 font-medium"><i class="fa-solid fa-check text-brand-green mt-1 text-xs"></i> Tudo do Profissional</li>
-          <li class="flex items-start gap-3 text-brand-dark/75 font-medium"><i class="fa-solid fa-check text-brand-green mt-1 text-xs"></i> Até <strong class="text-brand-dark font-bold">250 diagnósticos</strong> por mês</li>
-          <li class="flex items-start gap-3 text-brand-dark/75 font-medium"><i class="fa-solid fa-check text-brand-green mt-1 text-xs"></i> Todas as funcionalidades</li>
-          <li class="flex items-start gap-3 text-brand-dark/75 font-medium"><i class="fa-solid fa-check text-brand-green mt-1 text-xs"></i> Suporte prioritário</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 <section id="equipe" class="py-24 lg:py-28 bg-brand-cream">
@@ -848,10 +884,10 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
         </div>
         <p class="text-xs text-brand-dark/60 mt-4 leading-relaxed font-medium">Backend, regras de negócio e validação técnica em campo.</p>
         <div class="flex items-center gap-3 mt-5 pt-4 border-t border-brand-dark/5">
-          <a href="#" aria-label="LinkedIn de Lucas Gonzaga Andrade" class="team-social text-brand-dark/40 hover:text-brand-green">
+          <a href="https://www.linkedin.com/in/devlucasgonz/" target="_blank" rel="noopener" aria-label="LinkedIn de Lucas Gonzaga Andrade" class="team-social text-brand-dark/40 hover:text-brand-green">
             <i class="fa-brands fa-linkedin-in text-sm"></i>
           </a>
-          <a href="https://instagram.com/cashewcare" target="_blank" rel="noopener" aria-label="Instagram do CashewCare" class="team-social text-brand-dark/40 hover:text-brand-accent">
+          <a href="https://www.instagram.com/cashewcareoficial/" target="_blank" rel="noopener" aria-label="Instagram do CashewCare" class="team-social text-brand-dark/40 hover:text-brand-accent">
             <i class="fa-brands fa-instagram text-sm"></i>
           </a>
         </div>
@@ -867,10 +903,10 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
         </div>
         <p class="text-xs text-brand-dark/60 mt-4 leading-relaxed font-medium">Sensores, hardware embarcado e integração de dispositivos em campo.</p>
         <div class="flex items-center gap-3 mt-5 pt-4 border-t border-brand-dark/5">
-          <a href="#" aria-label="LinkedIn de Letícia dos Santos Ramos" class="team-social text-brand-dark/40 hover:text-brand-green">
+          <a href="https://www.linkedin.com/in/let%C3%ADcia-dos-santos-ramos-71830b33a/" target="_blank" rel="noopener" aria-label="LinkedIn de Letícia dos Santos Ramos" class="team-social text-brand-dark/40 hover:text-brand-green">
             <i class="fa-brands fa-linkedin-in text-sm"></i>
           </a>
-          <a href="https://instagram.com/cashewcare" target="_blank" rel="noopener" aria-label="Instagram do CashewCare" class="team-social text-brand-dark/40 hover:text-brand-accent">
+          <a href="https://www.instagram.com/cashewcareoficial/" target="_blank" rel="noopener" aria-label="Instagram do CashewCare" class="team-social text-brand-dark/40 hover:text-brand-accent">
             <i class="fa-brands fa-instagram text-sm"></i>
           </a>
         </div>
@@ -886,10 +922,10 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
         </div>
         <p class="text-xs text-brand-dark/60 mt-4 leading-relaxed font-medium">Frontend, backend, APIs e integração de serviços.</p>
         <div class="flex items-center gap-3 mt-5 pt-4 border-t border-brand-dark/5">
-          <a href="#" aria-label="LinkedIn de Gabriel Assunção Fernandes" class="team-social text-brand-dark/40 hover:text-brand-green">
+          <a href="https://www.linkedin.com/in/gabrielfernandesdeveloper/" target="_blank" rel="noopener" aria-label="LinkedIn de Gabriel Assunção Fernandes" class="team-social text-brand-dark/40 hover:text-brand-green">
             <i class="fa-brands fa-linkedin-in text-sm"></i>
           </a>
-          <a href="https://instagram.com/cashewcare" target="_blank" rel="noopener" aria-label="Instagram do CashewCare" class="team-social text-brand-dark/40 hover:text-brand-accent">
+          <a href="https://www.instagram.com/cashewcareoficial/" target="_blank" rel="noopener" aria-label="Instagram do CashewCare" class="team-social text-brand-dark/40 hover:text-brand-accent">
             <i class="fa-brands fa-instagram text-sm"></i>
           </a>
         </div>
@@ -905,10 +941,10 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
         </div>
         <p class="text-xs text-brand-dark/60 mt-4 leading-relaxed font-medium">Estratégia comercial, parcerias e modelo de negócio.</p>
         <div class="flex items-center gap-3 mt-5 pt-4 border-t border-brand-dark/5">
-          <a href="#" aria-label="LinkedIn de Rafael Mendes de Deus Carneiro" class="team-social text-brand-dark/40 hover:text-brand-green">
+          <a href="https://www.linkedin.com/in/rafael-carneiro-97245154/" target="_blank" rel="noopener" aria-label="LinkedIn de Rafael Mendes de Deus Carneiro" class="team-social text-brand-dark/40 hover:text-brand-green">
             <i class="fa-brands fa-linkedin-in text-sm"></i>
           </a>
-          <a href="https://instagram.com/cashewcare" target="_blank" rel="noopener" aria-label="Instagram do CashewCare" class="team-social text-brand-dark/40 hover:text-brand-accent">
+          <a href="https://www.instagram.com/cashewcareoficial/" target="_blank" rel="noopener" aria-label="Instagram do CashewCare" class="team-social text-brand-dark/40 hover:text-brand-accent">
             <i class="fa-brands fa-instagram text-sm"></i>
           </a>
         </div>
@@ -924,10 +960,10 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
         </div>
         <p class="text-xs text-brand-dark/60 mt-4 leading-relaxed font-medium">Jornada do usuário, protótipos, design system e usabilidade.</p>
         <div class="flex items-center gap-3 mt-5 pt-4 border-t border-brand-dark/5">
-          <a href="#" aria-label="LinkedIn de Giovanna Bandeira de Castro" class="team-social text-brand-dark/40 hover:text-brand-green">
+          <a href="https://www.linkedin.com/in/giovanna-castro-9a97802b5/" target="_blank" rel="noopener" aria-label="LinkedIn de Giovanna Bandeira de Castro" class="team-social text-brand-dark/40 hover:text-brand-green">
             <i class="fa-brands fa-linkedin-in text-sm"></i>
           </a>
-          <a href="https://instagram.com/cashewcare" target="_blank" rel="noopener" aria-label="Instagram do CashewCare" class="team-social text-brand-dark/40 hover:text-brand-accent">
+          <a href="https://www.instagram.com/cashewcareoficial/" target="_blank" rel="noopener" aria-label="Instagram do CashewCare" class="team-social text-brand-dark/40 hover:text-brand-accent">
             <i class="fa-brands fa-instagram text-sm"></i>
           </a>
         </div>
@@ -970,7 +1006,7 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
             </span>
             <div>
               <p class="text-xs text-brand-cream/60 font-semibold">E-mail</p>
-              <p class="text-sm font-bold text-white">contato@cashewcare.com.br</p>
+              <a href="mailto:cashewcarecontato@gmail.com" class="text-sm font-bold text-white hover:text-brand-peach transition break-all">cashewcarecontato@gmail.com</a>
             </div>
           </div>
           <div class="flex items-center gap-4">
@@ -988,16 +1024,7 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
             </span>
             <div>
               <p class="text-xs text-brand-cream/60 font-semibold">Instagram</p>
-              <a href="https://instagram.com/cashewcare" target="_blank" rel="noopener" class="text-sm font-bold text-white hover:text-brand-peach transition">@cashewcare</a>
-            </div>
-          </div>
-          <div class="flex items-center gap-4">
-            <span class="w-11 h-11 rounded-xl bg-white/5 grid place-items-center shrink-0">
-              <i class="fa-brands fa-linkedin-in text-brand-peach"></i>
-            </span>
-            <div>
-              <p class="text-xs text-brand-cream/60 font-semibold">LinkedIn</p>
-              <p class="text-sm font-bold text-white">/company/cashewcare</p>
+              <a href="https://www.instagram.com/cashewcareoficial/" target="_blank" rel="noopener" class="text-sm font-bold text-white hover:text-brand-peach transition">@cashewcareoficial</a>
             </div>
           </div>
         </div>
@@ -1065,6 +1092,10 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
             </div>
           </div>
 
+          <div class="hidden" aria-hidden="true">
+            <label>Não preencha este campo <input type="text" name="site" id="hp" tabindex="-1" autocomplete="off"></label>
+          </div>
+
           <button type="submit" id="submitBtn"
                   class="group w-full bg-brand-accent text-white font-bold py-4 rounded-full hover:bg-brand-green transition-all duration-300 flex items-center justify-center gap-2.5 disabled:opacity-60 disabled:cursor-not-allowed">
             <span id="btnText">Quero receber novidades</span>
@@ -1072,6 +1103,7 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
           </button>
 
           <p class="text-[11px] text-brand-dark/50 text-center leading-relaxed font-medium">
+            Você receberá um e-mail de confirmação de <strong class="text-brand-dark/70 font-bold">cashewcarecontato@gmail.com</strong>.<br>
             Seus dados estão protegidos conforme a <strong class="text-brand-dark/70 font-bold">LGPD</strong>.
           </p>
 
@@ -1089,8 +1121,8 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
 
       <div class="md:col-span-2">
         <a href="#hero" class="flex items-center gap-2.5 mb-5">
-          <span class="w-9 h-9 rounded-xl bg-brand-green grid place-items-center text-brand-cream">
-            <i class="fa-solid fa-leaf text-[15px]"></i>
+          <span class="w-10 h-10 rounded-xl bg-brand-cream grid place-items-center">
+            <img src="img/caju.png" alt="" class="w-8 h-8 object-contain" width="32" height="32" />
           </span>
           <span class="font-extrabold text-lg tracking-tight text-white">
             Cashew<span class="text-brand-peach">Care</span>
@@ -1107,19 +1139,13 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
         </p>
 
         <div class="flex items-center gap-2.5 mt-6">
-          <a href="https://instagram.com/cashewcare" target="_blank" rel="noopener" aria-label="Instagram @cashewcare"
+          <a href="https://www.instagram.com/cashewcareoficial/" target="_blank" rel="noopener" aria-label="Instagram @cashewcareoficial"
              class="flex items-center gap-2 h-10 px-3.5 rounded-xl bg-white/5 hover:bg-brand-green hover:text-white transition text-xs font-bold">
             <i class="fa-brands fa-instagram text-sm"></i>
-            <span>@cashewcare</span>
+            <span>@cashewcareoficial</span>
           </a>
-          <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-xl bg-white/5 grid place-items-center hover:bg-brand-green hover:text-white transition">
-            <i class="fa-brands fa-linkedin-in text-sm"></i>
-          </a>
-          <a href="#" aria-label="GitHub" class="w-10 h-10 rounded-xl bg-white/5 grid place-items-center hover:bg-brand-green hover:text-white transition">
-            <i class="fa-brands fa-github text-sm"></i>
-          </a>
-          <a href="#" aria-label="Pitch Deck em PDF" class="w-10 h-10 rounded-xl bg-white/5 grid place-items-center hover:bg-brand-green hover:text-white transition">
-            <i class="fa-solid fa-file-pdf text-sm"></i>
+          <a href="mailto:cashewcarecontato@gmail.com" aria-label="E-mail cashewcarecontato@gmail.com" class="w-10 h-10 rounded-xl bg-white/5 grid place-items-center hover:bg-brand-green hover:text-white transition">
+            <i class="fa-solid fa-envelope text-sm"></i>
           </a>
         </div>
       </div>
@@ -1130,18 +1156,18 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
           <li><a href="#problema" class="hover:text-brand-peach transition">Problema</a></li>
           <li><a href="#solucao"  class="hover:text-brand-peach transition">Solução</a></li>
           <li><a href="#tracao"   class="hover:text-brand-peach transition">Tração</a></li>
-          <li><a href="#planos"   class="hover:text-brand-peach transition">Planos</a></li>
+          <li><a href="#hdc"      class="hover:text-brand-peach transition">HDC 2025</a></li>
+          <li><a href="#baixar"   class="hover:text-brand-peach transition">Baixar app</a></li>
           <li><a href="#equipe"   class="hover:text-brand-peach transition">Equipe</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class="text-white font-bold text-sm mb-4">Recursos</h4>
+        <h4 class="text-white font-bold text-sm mb-4">Links</h4>
         <ul class="space-y-2.5 text-sm font-medium">
-          <li><a href="#" class="hover:text-brand-peach transition flex items-center gap-2"><i class="fa-brands fa-github text-xs"></i> Repositório no GitHub</a></li>
-          <li><a href="#" class="hover:text-brand-peach transition flex items-center gap-2"><i class="fa-solid fa-file-pdf text-xs"></i> Pitch Deck (PDF)</a></li>
-          <li><a href="#" class="hover:text-brand-peach transition flex items-center gap-2"><i class="fa-solid fa-newspaper text-xs"></i> Matéria no O Povo+</a></li>
-          <li><a href="mailto:contato@cashewcare.com.br" class="hover:text-brand-peach transition flex items-center gap-2"><i class="fa-solid fa-envelope text-xs"></i> contato@cashewcare.com.br</a></li>
+          <li><a href="https://www.instagram.com/cashewcareoficial/" target="_blank" rel="noopener" class="hover:text-brand-peach transition flex items-center gap-2"><i class="fa-brands fa-instagram text-xs"></i> @cashewcareoficial</a></li>
+          <li><a href="https://mais.opovo.com.br/jornal/reportagem/2025/10/16/futuro-agora-mais-de-10-mil-cearenses-formados-em-ia-dados-e-cloud-entre-2023-e-2025.html" target="_blank" rel="noopener" class="hover:text-brand-peach transition flex items-center gap-2"><i class="fa-solid fa-newspaper text-xs"></i> Matéria no O Povo+</a></li>
+          <li><a href="mailto:cashewcarecontato@gmail.com" class="hover:text-brand-peach transition flex items-center gap-2 break-all"><i class="fa-solid fa-envelope text-xs"></i> cashewcarecontato@gmail.com</a></li>
         </ul>
       </div>
     </div>
@@ -1154,6 +1180,98 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
     </div>
   </div>
 </footer>
+
+<div id="planos" role="dialog" aria-modal="true" aria-labelledby="planosTitle" hidden
+     class="fixed inset-0 z-[60] bg-brand-dark/60 backdrop-blur-sm overflow-y-auto">
+  <div class="min-h-full flex items-start justify-center px-4 py-10">
+  <div class="relative w-full max-w-6xl bg-white rounded-3xl py-14 lg:py-16 shadow-2xl">
+    <button type="button" data-close-planos aria-label="Fechar planos"
+            class="absolute top-4 right-4 w-10 h-10 rounded-xl grid place-items-center text-brand-dark/60 hover:bg-brand-dark/5 hover:text-brand-dark transition">
+      <i class="fa-solid fa-xmark text-lg"></i>
+    </button>
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center mb-14">
+      <span class="inline-flex items-center gap-2 text-brand-green text-xs font-bold uppercase tracking-[0.18em] mb-5">
+        <span class="w-8 h-px bg-brand-green"></span> Planos <span class="w-8 h-px bg-brand-green"></span>
+      </span>
+      <h2 id="planosTitle" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-brand-dark leading-[1.1]">
+        Comece grátis.<br><span class="text-gradient">Cresça no seu ritmo.</span>
+      </h2>
+      <p class="mt-5 text-lg text-brand-dark/65 font-medium">
+        Modelo SaaS freemium — o produtor usa direto e a adoção é ampliada por cooperativas, associações e órgãos públicos.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6 max-w-5xl mx-auto items-start">
+
+      <div class="card-lift bg-brand-cream rounded-3xl p-8 border border-brand-dark/5">
+        <div class="text-xs font-extrabold uppercase tracking-[0.15em] text-brand-dark/50">Gratuito</div>
+        <div class="mt-4 flex items-end gap-1">
+          <span class="text-4xl font-extrabold text-brand-dark">R$ 0</span>
+          <span class="text-brand-dark/50 text-sm mb-1 font-medium">/mês</span>
+        </div>
+        <p class="text-sm text-brand-dark/60 mt-3 leading-relaxed font-medium">Para conhecer a ferramenta e começar a diagnosticar.</p>
+
+        <a href="#contato" class="mt-7 block text-center border-2 border-brand-dark/10 text-brand-dark font-bold py-3.5 rounded-full hover:border-brand-green hover:text-brand-green transition">
+          Começar grátis
+        </a>
+
+        <ul class="mt-7 space-y-3 text-sm">
+          <li class="flex items-start gap-3 text-brand-dark/75 font-medium"><i class="fa-solid fa-check text-brand-green mt-1 text-xs"></i> Fórum da comunidade</li>
+          <li class="flex items-start gap-3 text-brand-dark/75 font-medium"><i class="fa-solid fa-check text-brand-green mt-1 text-xs"></i> Aulas curtas</li>
+          <li class="flex items-start gap-3 text-brand-dark/75 font-medium"><i class="fa-solid fa-check text-brand-green mt-1 text-xs"></i> Recomendações de produtos</li>
+          <li class="flex items-start gap-3 text-brand-dark/75 font-medium"><i class="fa-solid fa-check text-brand-green mt-1 text-xs"></i> Até <strong class="text-brand-dark font-bold">5 diagnósticos</strong> por mês</li>
+        </ul>
+      </div>
+
+      <div class="relative bg-brand-green text-white rounded-3xl p-8 shadow-2xl shadow-brand-green/20 lg:-mt-4">
+        <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-accent text-white text-[10px] font-extrabold uppercase tracking-[0.15em] px-4 py-1.5 rounded-full whitespace-nowrap">
+          Mais popular
+        </span>
+
+        <div class="text-xs font-extrabold uppercase tracking-[0.15em] text-brand-peach">Profissional</div>
+        <div class="mt-4 flex items-end gap-1">
+          <span class="text-4xl font-extrabold">R$ 27,90</span>
+          <span class="text-white/70 text-sm mb-1 font-medium">/mês</span>
+        </div>
+        <p class="text-sm text-white/75 mt-3 leading-relaxed font-medium">Para o produtor que quer acompanhar a safra de perto.</p>
+
+        <a href="#contato" class="mt-7 block text-center bg-brand-accent text-white font-bold py-3.5 rounded-full hover:bg-brand-dark transition">
+          Assinar agora
+        </a>
+
+        <ul class="mt-7 space-y-3 text-sm">
+          <li class="flex items-start gap-3 text-white/90 font-medium"><i class="fa-solid fa-check text-brand-peach mt-1 text-xs"></i> Tudo do plano Gratuito</li>
+          <li class="flex items-start gap-3 text-white/90 font-medium"><i class="fa-solid fa-check text-brand-peach mt-1 text-xs"></i> Até <strong class="text-white font-bold">50 diagnósticos</strong> por mês</li>
+          <li class="flex items-start gap-3 text-white/90 font-medium"><i class="fa-solid fa-check text-brand-peach mt-1 text-xs"></i> Mensagens entre agricultores</li>
+          <li class="flex items-start gap-3 text-white/90 font-medium"><i class="fa-solid fa-check text-brand-peach mt-1 text-xs"></i> Relatórios de safra</li>
+        </ul>
+      </div>
+
+      <div class="card-lift bg-brand-cream rounded-3xl p-8 border border-brand-dark/5">
+        <div class="text-xs font-extrabold uppercase tracking-[0.15em] text-brand-dark/50">Empresarial</div>
+        <div class="mt-4 flex items-end gap-1">
+          <span class="text-4xl font-extrabold text-brand-dark">R$ 119,99</span>
+          <span class="text-brand-dark/50 text-sm mb-1 font-medium">/mês</span>
+        </div>
+        <p class="text-sm text-brand-dark/60 mt-3 leading-relaxed font-medium">Para cooperativas, associações e grandes produtores.</p>
+
+        <a href="#contato" class="mt-7 block text-center border-2 border-brand-dark/10 text-brand-dark font-bold py-3.5 rounded-full hover:border-brand-green hover:text-brand-green transition">
+          Falar com vendas
+        </a>
+
+        <ul class="mt-7 space-y-3 text-sm">
+          <li class="flex items-start gap-3 text-brand-dark/75 font-medium"><i class="fa-solid fa-check text-brand-green mt-1 text-xs"></i> Tudo do Profissional</li>
+          <li class="flex items-start gap-3 text-brand-dark/75 font-medium"><i class="fa-solid fa-check text-brand-green mt-1 text-xs"></i> Até <strong class="text-brand-dark font-bold">250 diagnósticos</strong> por mês</li>
+          <li class="flex items-start gap-3 text-brand-dark/75 font-medium"><i class="fa-solid fa-check text-brand-green mt-1 text-xs"></i> Todas as funcionalidades</li>
+          <li class="flex items-start gap-3 text-brand-dark/75 font-medium"><i class="fa-solid fa-check text-brand-green mt-1 text-xs"></i> Suporte prioritário</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</div>
 
 <button id="backTop" aria-label="Voltar ao topo"
         class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-xl bg-brand-green text-white grid place-items-center opacity-0 translate-y-4 pointer-events-none transition-all duration-300 hover:bg-brand-accent">
@@ -1262,6 +1380,9 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
   }, { threshold: 0.35, rootMargin: '-80px 0px -50% 0px' });
   sections.forEach(s => sectionObserver.observe(s));
 
+  // URL do Web App do Google Apps Script (ver automacao-formulario/LEIA-ME.md)
+  const FORM_ENDPOINT = '';
+
   const form     = $('#leadForm');
   const feedback = $('#formFeedback');
   const submitBtn = $('#submitBtn');
@@ -1331,14 +1452,35 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
       perfil: perfil.value,
       timestamp: new Date().toISOString(),
     };
-    console.log('[CashewCare] Lead:', payload);
+    if ($('#hp').value) return; // bot
 
-    await new Promise(r => setTimeout(r, 1400));
+    let modoTeste = false;
+    try {
+      if (!FORM_ENDPOINT) {
+        modoTeste = true;
+        console.warn('[CashewCare] Modo de teste: FORM_ENDPOINT vazio, nada foi enviado.', payload);
+        await new Promise(r => setTimeout(r, 900));
+      } else await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+        body: new URLSearchParams(payload).toString(),
+      });
+    } catch (err) {
+      console.error('[CashewCare] Falha no envio:', err);
+      submitBtn.disabled = false;
+      btnText.textContent = 'Quero receber novidades';
+      btnIcon.className = 'fa-solid fa-arrow-right text-xs';
+      showFeedback('error', 'Não conseguimos enviar agora. Escreva para cashewcarecontato@gmail.com.');
+      return;
+    }
 
     submitBtn.disabled = false;
     btnText.textContent = 'Recebido!';
     btnIcon.className = 'fa-solid fa-check text-xs';
-    showFeedback('success', `Obrigado, ${payload.nome.split(' ')[0]}! Retornamos em até 48h.`);
+    showFeedback('success', modoTeste
+      ? `Modo de teste: formulário OK, ${payload.nome.split(' ')[0]}. O e-mail automático só sai depois de configurar a automação.`
+      : `Obrigado, ${payload.nome.split(' ')[0]}! Enviamos um e-mail de confirmação para você.`);
 
     form.reset();
     $$('.field', form).forEach(clearError);
@@ -1347,6 +1489,70 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
       btnText.textContent = 'Quero receber novidades';
       btnIcon.className = 'fa-solid fa-arrow-right text-xs';
     }, 3200);
+  });
+
+  // Planos (escondido — só abre ao clicar)
+  const planos = $('#planos');
+  let lastFocus = null;
+  const openPlanos = () => {
+    lastFocus = document.activeElement;
+    closeMenu();
+    planos.hidden = false;
+    document.body.classList.add('modal-open');
+    $('[data-close-planos]', planos).focus();
+  };
+  const closePlanos = () => {
+    planos.hidden = true;
+    document.body.classList.remove('modal-open');
+    if (lastFocus) lastFocus.focus();
+  };
+  $$('[data-open-planos]').forEach(b => b.addEventListener('click', openPlanos));
+  $('[data-close-planos]', planos).addEventListener('click', closePlanos);
+  planos.addEventListener('click', (e) => { if (e.target === planos || e.target === planos.firstElementChild) closePlanos(); });
+  $$('a[href="#contato"]', planos).forEach(a => a.addEventListener('click', closePlanos));
+
+  // Galeria HDC — lightbox
+  const items = $$('.gal-item');
+  const lb = $('#lightbox'), lbImg = $('#lbImg'), lbCap = $('#lbCap');
+  let cur = 0;
+  const show = (i) => {
+    cur = (i + items.length) % items.length;
+    const img = $('img', items[cur]);
+    lbImg.src = img.src; lbImg.alt = img.alt;
+    lbCap.textContent = $('figcaption', items[cur]).textContent;
+  };
+  const openLb = (i) => { lastFocus = document.activeElement; show(i); lb.hidden = false; document.body.classList.add('modal-open'); $('[data-lb="close"]', lb).focus(); };
+  const closeLb = () => { lb.hidden = true; document.body.classList.remove('modal-open'); if (lastFocus) lastFocus.focus(); };
+  items.forEach((el, i) => {
+    el.tabIndex = 0;
+    el.setAttribute('role', 'button');
+    el.addEventListener('click', () => openLb(i));
+    el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLb(i); } });
+  });
+  $('[data-lb="close"]', lb).addEventListener('click', closeLb);
+  $('[data-lb="prev"]', lb).addEventListener('click', () => show(cur - 1));
+  $('[data-lb="next"]', lb).addEventListener('click', () => show(cur + 1));
+  lb.addEventListener('click', (e) => { if (e.target === lb) closeLb(); });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lb.hidden) {
+      if (e.key === 'Escape') closeLb();
+      if (e.key === 'ArrowLeft') show(cur - 1);
+      if (e.key === 'ArrowRight') show(cur + 1);
+    } else if (!planos.hidden && e.key === 'Escape') closePlanos();
+  });
+
+  // QR codes: mostra o espaço reservado enquanto a imagem não existir
+  $$('.qr-slot').forEach(slot => {
+    const img = $('img', slot);
+    const markEmpty = () => slot.classList.add('is-empty');
+    if (img.complete && img.naturalWidth === 0) markEmpty();
+    img.addEventListener('error', markEmpty);
+  });
+  // Link do APK: preencha data-download-url no botão "Baixar APK"
+  $$('[data-download-url]').forEach(a => {
+    const url = a.dataset.downloadUrl;
+    if (url) { a.href = url; a.target = '_blank'; a.rel = 'noopener'; }
   });
 
   $('#year').textContent = new Date().getFullYear();
