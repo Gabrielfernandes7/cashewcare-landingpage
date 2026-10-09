@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /automacao-formulario/
+
+Sitemap: https://cashewcare-landingpage.vercel.app/sitemap.xml

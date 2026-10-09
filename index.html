@@ -9,10 +9,22 @@
 <link rel="icon" type="image/png" sizes="64x64" href="img/favicon-64.png" />
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
 <meta name="theme-color" content="#006F47" />
-<meta property="og:title" content="CashewCare — Diagnóstico Inteligente do Cajueiro" />
-<meta property="og:description" content="IA que diagnostica pragas e doenças do cajueiro por foto. 3º lugar na América Latina no Huawei Developer Competition 2025." />
-<meta property="og:image" content="img/premiacao.jpg" />
+<meta property="og:title" content="CashewCare — Diagnóstico do cajueiro pela foto" />
+<meta property="og:description" content="Uma foto da folha ou do fruto e você recebe o diagnóstico de pragas e doenças em segundos, com o tratamento indicado. AgTech cearense, 3º lugar na América Latina no Huawei HDC 2025." />
 <meta property="og:type" content="website" />
+<meta property="og:url" content="https://cashewcare-landingpage.vercel.app/" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content="CashewCare" />
+<meta property="og:image" content="https://cashewcare-landingpage.vercel.app/img/og-image.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1024" />
+<meta property="og:image:height" content="541" />
+<meta property="og:image:alt" content="Logo CashewCare: ícone de caju sobre fundo verde, com o texto Diagnóstico inteligente do cajueiro" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="CashewCare — Diagnóstico do cajueiro pela foto" />
+<meta name="twitter:description" content="Uma foto da folha ou do fruto e você recebe o diagnóstico de pragas e doenças em segundos, com o tratamento indicado. AgTech cearense, 3º lugar na América Latina no Huawei HDC 2025." />
+<meta name="twitter:image" content="https://cashewcare-landingpage.vercel.app/img/og-image.png" />
+<link rel="canonical" href="https://cashewcare-landingpage.vercel.app/" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -83,7 +95,8 @@ body { background: #FFFCF9; color: #171717; overflow-x: hidden; }
 .card-lift:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -15px rgba(0,111,71,.2); }
 
 .field:focus { outline: none; border-color: #006F47; box-shadow: 0 0 0 4px rgba(0,111,71,.1); }
-.field:focus + label, .field:not(:placeholder-shown) + label { transform: translateY(-1.4rem) scale(.85); color: #006F47; font-weight: 600; }
+.field:focus + label, .field:not(:placeholder-shown) + label { transform: translateY(-.7rem) scale(.85); color: #006F47; font-weight: 600; }
+.field[aria-invalid="true"], .field[aria-invalid="true"]:focus { border-color: #EC4C36; box-shadow: 0 0 0 4px rgba(236,76,54,.15); }
 
 .text-gradient { background: linear-gradient(100deg, #006F47 0%, #EC4C36 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
@@ -106,12 +119,12 @@ input[type="radio"]:focus-visible + div { outline: 2px solid #006F47; outline-of
 .gal-item:focus-visible { outline: 3px solid #FED8A7; outline-offset: 3px; }
 body.modal-open { overflow: hidden; }
 [hidden] { display: none !important; }
-.qr-slot { position: relative; width: 200px; height: 200px; border-radius: 1.25rem; background: #fff; border: 2px dashed rgba(23,23,23,.15); display: grid; place-items: center; overflow: hidden; }
-.qr-slot img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
+.qr-slot { position: relative; width: 208px; height: 208px; border-radius: 1.5rem; background: #fff; border: 2px dashed rgba(0,111,71,.2); display: grid; place-items: center; overflow: hidden; box-shadow: 0 20px 40px -18px rgba(0,111,71,.28); }
+.qr-slot img { width: 100%; height: 100%; object-fit: contain; padding: 14px; image-rendering: crisp-edges; }
 .qr-slot .qr-ph { display: none; flex-direction: column; align-items: center; gap: .6rem; color: rgba(23,23,23,.35); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; }
 .qr-slot.is-empty img { display: none; }
 .qr-slot.is-empty .qr-ph { display: flex; }
-.qr-slot:not(.is-empty) { border-style: solid; border-color: rgba(23,23,23,.06); }
+.qr-slot:not(.is-empty) { border-style: solid; border-color: rgba(0,111,71,.12); }
 .team-social { transition: color .2s ease, transform .2s ease; }
 .team-social:hover { transform: translateY(-1px); }
 </style>
@@ -1040,6 +1053,8 @@ body.modal-open { overflow: hidden; }
 
           <div class="relative">
             <input type="text" id="nome" name="nome" required placeholder=" "
+                   pattern="[A-Za-zÀ-ÖØ-öø-ÿ]+(?:[\s'’\-]+[A-Za-zÀ-ÖØ-öø-ÿ]+)+"
+                   title="Informe nome e sobrenome, sem números" autocomplete="name"
                    class="field peer w-full bg-white border border-brand-dark/10 rounded-xl px-4 pt-6 pb-2.5 text-sm text-brand-dark font-medium transition placeholder-transparent" />
             <label for="nome" class="absolute left-4 top-4 text-sm text-brand-dark/50 font-medium pointer-events-none origin-left transition-all duration-200">
               Nome completo *
@@ -1056,6 +1071,8 @@ body.modal-open { overflow: hidden; }
 
           <div class="relative">
             <input type="tel" id="whatsapp" name="whatsapp" required placeholder=" "
+                   pattern="(\+?55\s?)?\(?[1-9]{2}\)?\s?9?\s?\d{4}[\s\-]?\d{4}"
+                   title="Use o formato (DDD) 90000-0000" inputmode="tel" autocomplete="tel"
                    class="field peer w-full bg-white border border-brand-dark/10 rounded-xl px-4 pt-6 pb-2.5 text-sm text-brand-dark font-medium transition placeholder-transparent" />
             <label for="whatsapp" class="absolute left-4 top-4 text-sm text-brand-dark/50 font-medium pointer-events-none origin-left transition-all duration-200">
               WhatsApp *
@@ -1104,7 +1121,7 @@ body.modal-open { overflow: hidden; }
 
           <p class="text-[11px] text-brand-dark/50 text-center leading-relaxed font-medium">
             Você receberá um e-mail de confirmação de <strong class="text-brand-dark/70 font-bold">cashewcarecontato@gmail.com</strong>.<br>
-            Seus dados estão protegidos conforme a <strong class="text-brand-dark/70 font-bold">LGPD</strong>.
+            Seus dados estão protegidos conforme a <a href="privacidade.html" class="text-brand-green font-bold underline underline-offset-2 hover:text-brand-dark transition"><abbr title="Lei Geral de Proteção de Dados">LGPD</abbr></a>. <a href="privacidade.html" class="text-brand-green font-bold underline underline-offset-2 hover:text-brand-dark transition">Ver política de privacidade</a>.
           </p>
 
           <div id="formFeedback" class="hidden rounded-xl px-4 py-3.5 text-sm font-bold"></div>
@@ -1174,6 +1191,7 @@ body.modal-open { overflow: hidden; }
 
     <div class="mt-12 pt-7 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium">
       <p>© <span id="year">2026</span> CashewCare. Todos os direitos reservados.</p>
+      <a href="privacidade.html" class="hover:text-brand-peach transition">Política de Privacidade</a>
       <p class="flex items-center gap-1.5">
         Feito com <i class="fa-solid fa-heart text-brand-accent animate-pulseSoft"></i> no Ceará
       </p>
@@ -1390,7 +1408,8 @@ body.modal-open { overflow: hidden; }
   const btnIcon  = $('#btnIcon');
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-  const phoneRegex = /^[\d\s()+-]{10,}$/;
+  const nomeRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:[\s'’-]+[A-Za-zÀ-ÖØ-öø-ÿ]+)+$/;
+  const phoneRegex = /^(\+?55\s?)?\(?[1-9]{2}\)?\s?9?\s?\d{4}[\s-]?\d{4}$/;
 
   const setError = (field, msg) => {
     field.classList.add('border-brand-accent', 'ring-2', 'ring-brand-accent/15');
@@ -1428,8 +1447,8 @@ body.modal-open { overflow: hidden; }
     [nome, email, whatsapp].forEach(clearError);
     feedback.classList.add('hidden');
 
-    if (!nome.value.trim() || nome.value.trim().length < 3) {
-      setError(nome, 'Informe seu nome completo.'); nome.focus(); return;
+    if (!nomeRegex.test(nome.value.trim())) {
+      setError(nome, 'Informe seu nome completo (nome e sobrenome).'); nome.focus(); return;
     }
     if (!emailRegex.test(email.value.trim())) {
       setError(email, 'Informe um e-mail válido.'); email.focus(); return;
