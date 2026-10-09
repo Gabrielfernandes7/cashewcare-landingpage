@@ -779,15 +779,15 @@ body.modal-open { overflow: hidden; }
         <img src="img/finalistas.jpg" alt="Foto oficial com todas as equipes finalistas no Festival Curicaca" loading="lazy" />
         <figcaption>Finalistas da América Latina</figcaption>
       </figure>
-      <figure class="gal-item reveal reveal-delay-2" data-index="2">
-        <img src="img/palco.jpg" alt="Três integrantes da equipe no palco com camisas Huawei" loading="lazy" style="object-position:50% 20%" />
-        <figcaption>No palco</figcaption>
+      <figure class="gal-item reveal reveal-delay-2 col-span-2" data-index="2">
+        <img src="img/equipe-ucb.jpg" alt="Equipe CashewCare reunida no campus da UCB, em Brasília" loading="lazy" style="object-position:50% 22%" />
+        <figcaption>Equipe na UCB</figcaption>
       </figure>
-      <figure class="gal-item reveal reveal-delay-3" data-index="3">
+      <figure class="gal-item reveal" data-index="3">
         <img src="img/estande.jpg" alt="Integrantes no estande da Huawei" loading="lazy" style="object-position:50% 60%" />
         <figcaption>Estande Huawei</figcaption>
       </figure>
-      <figure class="gal-item reveal col-span-2" data-index="4">
+      <figure class="gal-item reveal reveal-delay-1" data-index="4">
         <img src="img/pitch-equipe.jpg" alt="Apresentação do slide Team Introduction no auditório da UCB" loading="lazy" />
         <figcaption>Pitch · apresentação do time</figcaption>
       </figure>
@@ -1381,7 +1381,7 @@ body.modal-open { overflow: hidden; }
   sections.forEach(s => sectionObserver.observe(s));
 
   // URL do Web App do Google Apps Script (ver automacao-formulario/LEIA-ME.md)
-  const FORM_ENDPOINT = '';
+  const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzYJJG2OeVg2192g7Jns3owy3q1uwWGWPGDxP6ON_h-CLxA-Qvj3gOuweP4j4z56myC/exec';
 
   const form     = $('#leadForm');
   const feedback = $('#formFeedback');
