@@ -567,7 +567,7 @@ body.modal-open { overflow: hidden; }
 
     <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
 
-      <!-- ANDROID: troque img/qr-android.png pelo QR code e coloque o link do APK em data-download-url -->
+      <!-- ANDROID: QR code em img/qr-android.png aponta para o APK no Google Drive (ver data-download-url) -->
       <article class="reveal card-lift bg-white rounded-3xl p-8 border border-brand-dark/5 flex flex-col items-center text-center">
         <div class="flex items-center gap-3 mb-6">
           <span class="w-11 h-11 rounded-xl bg-brand-green/10 grid place-items-center"><i class="fa-brands fa-android text-brand-green text-xl"></i></span>
@@ -580,7 +580,7 @@ body.modal-open { overflow: hidden; }
           <img src="img/qr-android.png" alt="QR code para baixar o CashewCare para Android" width="200" height="200" />
           <span class="qr-ph"><i class="fa-solid fa-qrcode text-4xl"></i>QR code Android</span>
         </div>
-        <a data-download-url="" href="#contato"
+        <a data-download-url="https://github.com/Gabrielfernandes7/cashewcare-landingpage/releases/download/android/app-release.apk" href="#contato"
            class="mt-7 inline-flex items-center gap-2.5 bg-brand-green text-white font-bold px-6 py-3.5 rounded-full hover:bg-brand-dark transition">
           <i class="fa-solid fa-download text-sm"></i> Baixar APK
         </a>
